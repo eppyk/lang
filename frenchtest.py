@@ -43,7 +43,7 @@ def test(d):
         else:
             print "Oh :( Wrong. The French translation is %s" % (lines[g+1])
     else:
-        print "FUCKER, WRONG"
+        print "wrong"
 
 
 a = input("Hey! What do you wanna do? \n 1 - add a new word to the bank \n 2 - test yourself \n")
