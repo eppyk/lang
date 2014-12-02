@@ -1,19 +1,33 @@
 import random
+import time
 
 def file_len(wordbank):
+    #defines how many lines are there in an external file
     with open(wordbank) as f:
         for i, l in enumerate(f):
             pass
     return i
 
 def append(b, c):
+    #appends new words to the wordbank
     file = open("wordbank.py", "a")
 
     file.write("%s\n%s\n" %(b,c))
 
     file.close()
 
+def saveAns (a, x, y):
+    #saving answers with a date in chart.py
+    print "I got into saveAns"
+    if(a=="Y"):
+        print "I got into saveAns' if"
+        file = open("chart.py", "a")
+        file.write( time.strftime("%x") + " " + "%d %d\n" % (x, y))
+        file.close()
+
+
 def test():
+    #the test itself; checks if the answer is correct
     x = 0
     y = 0
     z = "1"
@@ -57,8 +71,11 @@ def test():
 
 
     print "Had enough? You answered %d questions and your score is:\n %d good answers \n %d wrong answers" % (x+y, x, y)
+    sav = raw_input("Do you wanna save your answers? \n Y - Yes \n N - No\n")
+    saveAns(sav, x, y)
 
-
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+ # # # # # # # # # # # THE MAIN PROGRAM # # # # # # # # # #
 
 a = input("Hey! What do you wanna do? \n 1 - add a new word to the bank \n 2 - test yourself \n")
 
