@@ -1,4 +1,5 @@
 import random
+import datetime
 import time
 
 def file_len(wordbank):
@@ -18,11 +19,11 @@ def append(b, c):
 
 def saveAns (a, x, y):
     #saving answers with a date in chart.py
-    print "I got into saveAns"
+
     if(a=="Y"):
-        print "I got into saveAns' if"
+
         file = open("chart.py", "a")
-        file.write( time.strftime("%x") + " " + "%d %d\n" % (x, y))
+        file.write( time.strftime("%x") + "\n" + "%d\n%d\n" % (x, y))
         file.close()
 
 
@@ -74,10 +75,33 @@ def test():
     sav = raw_input("Do you wanna save your answers? \n Y - Yes \n N - No\n")
     saveAns(sav, x, y)
 
+
+def printScores():
+    #this function prints all the saved scores by date
+    f=open('chart.py')
+    e = file_len('chart.py')
+    lines=f.readlines()
+    a = 1
+    while a < e-2:
+        print "date:" + lines[a] + " "
+        print "      " + "good:" + lines[a+1] + " "
+        print "      " + "bad:" + lines[a+2] + "\n"
+        a += 3
+
+def printSpecDate(date1):
+
+    f=open('chart.py')
+    e = file_len('chart.py')
+    lines=f.readlines()
+    z = 0
+    for i in range(0, e):
+        if lines[i]==date1:
+            print lines[i] + "      " + "good: " + lines[i+1] + "      " + "wrong: " + lines [i+2]
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
  # # # # # # # # # # # THE MAIN PROGRAM # # # # # # # # # #
 
-a = input("Hey! What do you wanna do? \n 1 - add a new word to the bank \n 2 - test yourself \n")
+a = input("Hey! What do you wanna do? \n 1 - add a new word to the bank \n 2 - test yourself \n 3 - see the scores \n 4 - see the scores from a specific day \n")
 
 int(a)
 
@@ -92,3 +116,17 @@ if (a==1):
 
 elif a==2:
     test()
+
+elif a==3:
+    printScores()
+
+elif a==4:
+    print "What date do you wanna see?\n"
+
+    day = input("Day (DD): ")
+    month = input("Month (MM): ")
+    year = input("Year (YY): ")
+
+    date1 = time.strftime("%m/%d/%y\n")
+    print "date obtained: " + date1
+    printSpecDate(date1)
