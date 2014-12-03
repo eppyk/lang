@@ -70,8 +70,9 @@ def test():
 
         z = raw_input("Do you want to continue? \n 1 - Yes \n 2 - No, thanks\n")
 
+    a = (x/(x+y))*100
+    print "Had enough? You answered %d questions and your score is:\n %d good answers \n %d wrong answers. \n That makes %d percent good answers." % (x+y, x, y, a)
 
-    print "Had enough? You answered %d questions and your score is:\n %d good answers \n %d wrong answers" % (x+y, x, y)
     sav = raw_input("Do you wanna save your answers? \n Y - Yes \n N - No\n")
     saveAns(sav, x, y)
 
