@@ -86,7 +86,6 @@ def test(lang):
 ##
 def printScores(lang):
     #this function prints all the saved scores by date
-    print("i got here yeah")
     f=open(lang + 'chart.py')
     e = file_len(lang + 'chart.py')
     lines=f.readlines()
